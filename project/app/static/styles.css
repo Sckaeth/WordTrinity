@@ -1,0 +1,367 @@
+﻿/* Colour variables */
+:root {
+    --dark-1: #d2c9b4; /* black */
+    --dark-2: #C9BFAB; /* grey */
+    --dark-3: #c49856; /* border */
+    --dark-4: #c2a06c; /* brown */
+    --mid-1: #655638; /* gold */
+    --mid-2: #77623c; /* bright gold */
+    --light-1: #736a58; /* light beige */
+    --light-2: #9f9d95; /* off white */
+}
+
+/* Elements */
+html, body {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    user-select: none;
+    background-color: var(--dark-1);
+    text-align: center;
+    color: var(--mid-1);
+    scrollbar-color: var(--mid-1) var(--dark-1);
+    scrollbar-width: thin;
+}
+
+footer {
+    opacity: 0.2;
+    min-height: 50px;
+}
+
+button {
+    background: none;
+    border: none;
+    color: var(--mid-1);
+}
+
+button:hover, button:active {
+    color: var(--dark-3);
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+span {
+    padding: 0 5px;
+}
+
+/* Global */
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide, .modal-section {
+    display: none;
+}
+
+.invert {
+    background-color: var(--mid-1) !important;
+    color: var(--dark-1) !important;
+}
+
+#share-results > span:hover {
+    color: var(--dark-4) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--mid-1);
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Typography */
+.header__title {
+    color: var(--mid-2);
+    font-family: 'Macondo', cursive;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: 'Pragati Narrow', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.puzzle__counter {
+    font-family: 'Pragati Narrow', sans-serif;
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 18px;
+}
+
+.text-button {
+    border: 1px solid var(--dark-3);
+    margin: 10px 5px;
+    padding: 5px 1em;
+}
+
+.results__title {
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+.graph-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+/* Overlays */
+.overlay {
+    position: absolute;
+    background-color: var(--dark-1);
+    color: var(--mid-1);
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+}
+
+.body__overlay {
+    z-index: 3;
+}
+
+.puzzle__overlay > .centered {
+    height: 100%;
+    width: 100%;
+}
+
+/* Slots */
+.slot {
+    height: 2.5em;
+    width: 2.5em;
+    margin: 3px;
+    border: 1px solid var(--dark-3);
+    display: inline-block;
+    background: #d9ccb9;
+    color: var(--dark-3);
+    aspect-ratio: 1/1;
+}
+
+.slot:disabled {
+    opacity: 0.5;
+}
+
+/* Puzzle */
+.puzzle {
+    position: relative;
+}
+.puzzle__letters {
+    min-height: 70px;
+    border: 1px dashed var(--dark-3);
+    flex-wrap: wrap;
+    font-size: 20px;
+}
+
+.puzzle__letters > button:hover {
+    outline: 1px solid var(--dark-3);
+}
+
+.puzzle__display {
+    min-height: 21em;
+    outline: none;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.puzzle__words {
+    position: relative;
+    transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) 2s;
+}
+
+.icon {
+    font-size: 32px;
+}
+
+
+/* Word */
+.word {
+    position: absolute;
+    padding-top: 1.75em;
+}
+
+.active > .word__slot {
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 2px var(--dark-4);
+    opacity: 1;
+ }
+
+.active > .word__slot:hover {
+    outline: 0.05em solid var(--dark-3);
+}
+
+.active > .word__slot.start {
+    outline: 0.15em solid var(--dark-3);
+}
+
+.word::before {
+    content: "";
+    position: absolute;
+    background-color: var(--dark-4);
+    opacity: 0.5;
+    height: 0.25em;
+    width: 135%;
+    z-index: -1;
+    cursor: default;
+}
+
+#word-1 {
+    transform: translateY(100%);
+}
+
+#word-2 {
+    transform: rotate(-120deg) translateY(100%);
+}
+
+#word-3 {
+    transform: rotate(120deg) translateY(100%);
+}
+
+/* Word slots */
+.word__slot {
+    transition: all linear 100ms;
+    font-weight: bold;
+}
+
+.word__slot.state-1, .state-1 {
+    background-color: #ff2a24;
+}
+
+.word__slot.state-2, .state-2 {
+    background-color: #ff8710;
+}
+
+.word__slot.state-3, .state-3 {
+    background-color: #ffcb02;
+}
+
+.word__slot.state-4, .state-4 {
+    background-color: #4eff33;
+    cursor: default !important;
+    outline: none !important;
+}
+
+.word__slot.disabled {
+    cursor: default !important;
+    outline: none !important;
+}
+
+/* Modal */
+.modal-content, .modal-content > * {
+    background: var(--dark-1);
+    border: none;
+    color: var(--mid-2);
+}
+
+.modal-header-bg {
+    background-color: var(--dark-1);
+    background-image: url("img/modal-bg.jpg");
+    background-size: cover;
+}
+
+.account__userid > span {
+    user-select: all;
+}
+
+#help > div {
+    margin: 10px;
+    text-align: left;
+}
+
+#help > * > .material-icons-outlined {
+    font-size: inherit;
+    padding: 0px;
+}
+
+#help > * > span.text-button {
+    font-size: 12px;
+    max-height: 1em;
+}
+
+/* Alerts */
+.puzzle__alert {
+    position: relative;
+}
+.toast {
+    position: absolute;
+    width: auto;
+    z-index: 1;
+}
+
+/* Icons */
+span.lg {
+    display: inline-block;
+}
+
+span.sm {
+    display: none;
+}
+
+
+/* Stats */
+.graph > .row > * {
+    padding: 0;
+}
+
+.bar {
+    height: 20px;
+    background-color: var(--dark-2);
+    color: var(--mid-1);
+    padding: 0px 1em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* XS screens */
+@media only screen and (max-width: 400px) {
+    .slot {
+        font-size: 16px;
+        margin: 0px;
+    }
+    .word {
+        padding-top: 1.25em;
+    }
+}
+
+/* XXS screens */
+@media only screen and (max-width: 200px) {
+    html, body {
+        overflow-x: auto;
+    }
+    .puzzle__display {
+        padding: 2em 0;
+    }
+    .word, .puzzle__words {
+        position: static;
+        flex-direction: column;
+        max-height: none;
+    }
+    #word-1, #word-2, #word-3 {
+        transform: none;
+    }
+    .word::before {
+        height: 13em;
+        width: 0.25em;
+    }
+
+    span.lg {
+        display: none;
+    }
+
+    span.sm {
+        display: inline-block;
+    }
+}
