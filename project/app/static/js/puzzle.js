@@ -102,6 +102,9 @@ class Puzzle {
 		// Disable all buttons
 		this.enableButtons(false);
 		this.keyboard = false;
+		// Reset stats buttons
+		$("#view-results").hide();
+		$(".puzzle__buttons > button").not("#view-results").show();
 	}
 
 	// Reconstruct puzzle with new user/data
@@ -279,9 +282,9 @@ class Puzzle {
 		if (bool) {
 			$(".puzzle__letters > button").click((event) => { this.onLetterClicked(event) });
 			$(".word__slot").click((event) => { this.onSlotClicked(event) });
-			$("#reset-letters").click(() => { this.resetSlotLetters() });
-			submit_word.click(() => { this.verifyWord(false) });
-			$("#submit-puzzle").click(() => { this.verifyWord(true) });
+			$("#reset-letters").click(() => { this.resetSlotLetters() }).prop("disabled", false);
+			submit_word.click(() => { this.verifyWord(false) }).prop("disabled", false);
+			$("#submit-puzzle").click(() => { this.verifyWord(true) }).prop("disabled", false);
 		} else {
 			$(".puzzle__letters > button").off().prop("disabled", true);
 			$(".word__slot").off();
