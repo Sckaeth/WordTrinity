@@ -1,13 +1,13 @@
 ﻿/* Colour variables */
 :root {
-    --dark-1: #d2c9b4; /* black */
-    --dark-2: #C9BFAB; /* grey */
-    --dark-3: #c49856; /* border */
-    --dark-4: #c2a06c; /* brown */
-    --mid-1: #655638; /* gold */
-    --mid-2: #77623c; /* bright gold */
-    --light-1: #736a58; /* light beige */
-    --light-2: #9f9d95; /* off white */
+    --dark-1: #151316; /* black */
+    --dark-2: #282828; /* grey */
+    --dark-3: #735A34; /* border */
+    --dark-4: #3A3121; /* brown */
+    --mid-1: #A28959; /* gold */
+    --mid-2: #C2A165; /* bright gold */
+    --light-1: #DAC8A7; /* light beige */
+    --light-2: #FBF9EE; /* off white */
 }
 
 /* Elements */
@@ -145,7 +145,7 @@ span {
     margin: 3px;
     border: 1px solid var(--dark-3);
     display: inline-block;
-    background: #d9ccb9;
+    background: #1d1919;
     color: var(--dark-3);
     aspect-ratio: 1/1;
 }
@@ -232,23 +232,26 @@ span {
 /* Word slots */
 .word__slot {
     transition: all linear 100ms;
+}
+
+.word__slot:first-child, .word__slot:last-child {
     font-weight: bold;
 }
 
 .word__slot.state-1, .state-1 {
-    background-color: #ff2a24;
+    background-color: #FFB1B0;
 }
 
 .word__slot.state-2, .state-2 {
-    background-color: #ff8710;
+    background-color: #FFDFBE;
 }
 
 .word__slot.state-3, .state-3 {
-    background-color: #ffcb02;
+    background-color: #FFFFBF;
 }
 
 .word__slot.state-4, .state-4 {
-    background-color: #4eff33;
+    background-color: #B4F0A7;
     cursor: default !important;
     outline: none !important;
 }

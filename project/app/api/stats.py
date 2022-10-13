@@ -13,9 +13,9 @@ def round_value(number, decimals):
 
 # Gets the statistics for the current puzzle or all puzzles, for all users.
 def get_puzzle_statistics(type, user=None):
-    # If the type is 'population' all puzzles are checked.
-    # If the type is 'user' only the current day's puzzle is checked.
-    if type == 'population':
+    # If the type is 'user' all puzzles are checked.
+    # If the type is 'population' only the current day's puzzle is checked.
+    if type == 'user':
         games = Game.query.filter_by().all()
     else:
         games = Game.query.filter_by(puzzleid=load.get_current_puzzleid()).all()
